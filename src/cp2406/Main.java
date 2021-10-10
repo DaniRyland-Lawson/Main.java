@@ -1,7 +1,6 @@
 package cp2406;
 
 import com.opencsv.CSVReader;
-import com.opencsv.CSVReaderHeaderAware;
 import com.opencsv.CSVWriter;
 import org.apache.commons.collections.iterators.AbstractOrderedMapIteratorDecorator;
 
@@ -42,10 +41,10 @@ public class Main {
 // read file
             CSVReader csv = new CSVReader(reader);
             List<String[]> arr = csv.readAll();
-            String[] header = arr.remove(0);
+            // Removed the bottom
+           // String[] header = arr.remove(0);
             System.out.println(Arrays.toString(arr.get(0)));
-            for (int i = 0; i < arr.size(); i++) {
-                String[] row = arr.get(i);
+            for (String[] row : arr) {
                 System.out.println(Arrays.toString(row));
                 // still to fix is the average per month for the years
                 collectMonth(monthMap, row);
@@ -77,13 +76,13 @@ public class Main {
         outPath = "./src/cp2406/MyMaxDay.csv";
         header = new String[]{"Month-day", "Max rain"};
         myWriteToCSV(dayMax, outPath, header );
+        }
 
-
-        // write your code here
-    }
 
     private static void myWriteToCSV(HashMap<String, Double> map, String outPath, String[] header) {
-        CSVWriter csv = null;
+// removed null from warning
+        CSVWriter csv;
+
         try {
             FileWriter writer = new FileWriter(outPath);
             csv = new CSVWriter(writer);
@@ -100,9 +99,7 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        finally {
 
-        }
     }
 
     private static void collectMonth(HashMap<String, Double> map, String[] row) {
