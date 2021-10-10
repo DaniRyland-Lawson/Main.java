@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="commons-beanutils-1.9.3">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/cp2406/commons-beanutils-1.9.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/cp2406/commons-collections-3.2.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/cp2406/commons-collections4-4.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/cp2406/commons-lang3-3.8.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/cp2406/commons-logging-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/cp2406/commons-text-1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/cp2406/opencsv-4.6.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
