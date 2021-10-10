@@ -2,14 +2,17 @@ package cp2406;
 
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderHeaderAware;
+import com.opencsv.CSVWriter;
 import org.apache.commons.collections.iterators.AbstractOrderedMapIteratorDecorator;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Main {
     //[Product code,
@@ -44,6 +47,7 @@ public class Main {
             for (int i = 0; i < arr.size(); i++) {
                 String[] row = arr.get(i);
                 System.out.println(Arrays.toString(row));
+                // still to fix is the average per month for the years
                 collectMonth(monthMap, row);
                 collectDay(dayMin, row, true);
                 collectDay(dayMax, row, false);
@@ -59,7 +63,46 @@ public class Main {
         System.out.println(monthMap);
         System.out.println(dayMin);
         System.out.println(dayMax);
+
+
+        String outPath = "./src/cp2406/MyMonthMap.csv";
+        String[] header = {"Month", "Total rain"};
+        myWriteToCSV(monthMap, outPath, header );
+
+
+        outPath = "./src/cp2406/MyMinDay.csv";
+        header = new String[]{"Month-day", "Min rain"};
+        myWriteToCSV(dayMin, outPath, header );
+
+        outPath = "./src/cp2406/MyMaxDay.csv";
+        header = new String[]{"Month-day", "Max rain"};
+        myWriteToCSV(dayMax, outPath, header );
+
+
         // write your code here
+    }
+
+    private static void myWriteToCSV(HashMap<String, Double> map, String outPath, String[] header) {
+        CSVWriter csv = null;
+        try {
+            FileWriter writer = new FileWriter(outPath);
+            csv = new CSVWriter(writer);
+//            String[] header = {"Month", "Total rain"};
+            csv.writeNext(header);
+            for (Map.Entry<String, Double> entry: map.entrySet()) {
+                String key = entry.getKey();
+                Double v = entry.getValue();
+                String[] row = {key, v.toString() };
+                System.out.println(Arrays.toString(row));
+                csv.writeNext(row);
+            }
+            csv.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        finally {
+
+        }
     }
 
     private static void collectMonth(HashMap<String, Double> map, String[] row) {
