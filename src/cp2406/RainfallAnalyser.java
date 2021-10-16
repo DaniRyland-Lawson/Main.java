@@ -2,7 +2,6 @@ package cp2406;
 
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
-import org.apache.commons.collections.iterators.AbstractOrderedMapIteratorDecorator;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -13,8 +12,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Main {
-    //[Product code,
+
+public class RainfallAnalyser {
+//[Product code,
 // Bureau of Meteorology station number,
 // Year,
 // Month,
@@ -22,6 +22,7 @@ public class Main {
 // Rainfall amount (millimetres),
 // Period over which rainfall was measured (days),
 // Quality]
+    //public static final int YEAR_IDX = 2;
     public static final int MONTH_IDX = 3;
     public static final int DAY_IDX = 4;
     public static final int RAIN_IDX = 5;
@@ -59,6 +60,7 @@ public class Main {
             e.printStackTrace();
         }
 
+
         System.out.println(monthMap);
         System.out.println(dayMin);
         System.out.println(dayMax);
@@ -82,7 +84,6 @@ public class Main {
     private static void myWriteToCSV(HashMap<String, Double> map, String outPath, String[] header) {
 // removed null from warning
         CSVWriter csv;
-
         try {
             FileWriter writer = new FileWriter(outPath);
             csv = new CSVWriter(writer);
@@ -129,7 +130,9 @@ public class Main {
         double rain = 0;
         try {
             rain = Double.parseDouble(str);
-        } catch (Exception e) {}
+        } catch (Exception e) {
+
+        }
 
         if (map.containsKey(key)){
             double oldRain = map.get(key);
