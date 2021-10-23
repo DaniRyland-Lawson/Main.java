@@ -22,14 +22,16 @@ public class RainfallAnalyser {
 // Rainfall amount (millimetres),
 // Period over which rainfall was measured (days),
 // Quality]
-    //public static final int YEAR_IDX = 2;
+    public static final int YEAR_IDX = 2;
     public static final int MONTH_IDX = 3;
     public static final int DAY_IDX = 4;
     public static final int RAIN_IDX = 5;
 
     public static void main(String[] args) {
         System.out.println("Hello Assign 2 Let's do this");
+
 // create map
+        HashMap<String, Double> yearMap = new HashMap<>();
         HashMap<String, Double> monthMap = new HashMap<>();
         HashMap<String, Double> dayMin = new HashMap<>();
         HashMap<String, Double> dayMax = new HashMap<>();
@@ -48,6 +50,7 @@ public class RainfallAnalyser {
             for (String[] row : arr) {
                 System.out.println(Arrays.toString(row));
                 // still to fix is the average per month for the years
+//                collectYear(yearMap, row);
                 collectMonth(monthMap, row);
                 collectDay(dayMin, row, true);
                 collectDay(dayMax, row, false);
@@ -60,14 +63,14 @@ public class RainfallAnalyser {
             e.printStackTrace();
         }
 
-
+        System.out.println(yearMap);
         System.out.println(monthMap);
         System.out.println(dayMin);
         System.out.println(dayMax);
 
 
         String outPath = "./src/cp2406/MyMonthMap.csv";
-        String[] header = {"Month", "Total rain"};
+        String[] header ={"Month", "Total rain"};
         myWriteToCSV(monthMap, outPath, header );
 
 
@@ -79,6 +82,7 @@ public class RainfallAnalyser {
         header = new String[]{"Month-day", "Max rain"};
         myWriteToCSV(dayMax, outPath, header );
         }
+
 
 
     private static void myWriteToCSV(HashMap<String, Double> map, String outPath, String[] header) {
@@ -146,6 +150,9 @@ public class RainfallAnalyser {
         }
         else {
             map.put(key, rain);
+
+
         }
+
     }
 }
