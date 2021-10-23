@@ -38,7 +38,7 @@ public class RainfallAnalyser {
 // open file
         try {
             FileReader reader = new FileReader(
-                    "./src/cp2406/MountSheridanStationCNS.csv");
+                    "BOMRainFallFiles/MountSheridanStationCNS.csv");
 //            CSVReaderHeaderAware csv = new CSVReaderHeaderAware(reader);
 
 // read file
@@ -69,16 +69,16 @@ public class RainfallAnalyser {
         System.out.println(dayMax);
 
 
-        String outPath = "./src/cp2406/MyMonthMap.csv";
+        String outPath = "BOMRainFallFiles/MyMonthMap.csv";
         String[] header ={"Month", "Total rain"};
         myWriteToCSV(monthMap, outPath, header );
 
 
-        outPath = "./src/cp2406/MyMinDay.csv";
+        outPath = "BOMRainFallFiles/MyMinDay.csv";
         header = new String[]{"Month-day", "Min rain"};
         myWriteToCSV(dayMin, outPath, header );
 
-        outPath = "./src/cp2406/MyMaxDay.csv";
+        outPath = "BOMRainFallFiles/MyMaxDay.csv";
         header = new String[]{"Month-day", "Max rain"};
         myWriteToCSV(dayMax, outPath, header );
         }

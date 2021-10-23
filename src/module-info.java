@@ -4,7 +4,7 @@ module cp2406assign {
     requires javafx.fxml;
     requires opencsv;
     requires java.desktop;
-    requires commons.collections;
+
 
     opens cp2406;
 
