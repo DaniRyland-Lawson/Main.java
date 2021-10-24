@@ -35,7 +35,7 @@ public class RainfallVisualiser extends Application {
          yAxis.setLabel("Rainfall (MM)");
 
          //Creating a Barchart
-         var barChart = new BarChart(xAxis, yAxis);
+         BarChart<? extends String, ? extends Number> barChart = new BarChart<>(xAxis, yAxis);
 
          //Preparing the data for BarChart
          XYChart.Series series = new XYChart.Series();
